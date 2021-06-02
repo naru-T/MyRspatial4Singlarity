@@ -19,6 +19,7 @@ RUN Rscript -e "remotes::install_github('paleolimbot/qgisprocess')"
 
 COPY renv.lock renv.lock
 RUN R -e 'renv::consent(provided = TRUE); renv::restore()'
+RUN Rscript -e "install.packages(c('GWmodel','nsprcomp'))"
 
 
 #https://hub.docker.com/r/rocker/verse/dockerfile
