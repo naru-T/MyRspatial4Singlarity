@@ -19,7 +19,9 @@ RUN Rscript -e "remotes::install_github('paleolimbot/qgisprocess')"
 
 COPY renv.lock renv.lock
 RUN R -e 'renv::consent(provided = TRUE); renv::restore()'
-RUN Rscript -e "install.packages(c('GWmodel','nsprcomp'))"
+RUN Rscript -e "install.packages(c('nsprcomp','GWnnegPCA'))"
+RUN wget https://cran.r-project.org/src/contrib/Archive/GWmodel/GWmodel_2.2-5.tar.gz
+RUN R CMD INSTALL rGWmodel_2.2-5.tar.gz
 
 
 #https://hub.docker.com/r/rocker/verse/dockerfile
